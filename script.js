@@ -17,6 +17,16 @@ function checkWinner(){
         [2,4,6]
     ];
     for(const combo of winnigCombos){
-        const[a,b,c]=combo
+        const[a,b,c]=combo;
+        if(cells[a].textContent&&cells[a].textContent==cells[b].textContent&&cells[a].textContent==cells[c].textContent){
+            gammeOver=true;
+            winnerText.textContent='Player ${currentPlayer} wins!';
+            cells[a].style.backgroundColor="lightgreen";
+            cells[b].style.backgroundColor="lightgreen";
+            cells[c].style.backgroundColor="lightgreen";
+            
+        }
     }
 }
+
+fuction handleClick
