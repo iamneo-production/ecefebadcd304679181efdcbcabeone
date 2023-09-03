@@ -3,7 +3,7 @@ const board=document.getElementById("board");
 const winnerText=document.getElementById("winner-text");
 const resetButton=document.getElementById("reset-button");
 let currentPlayer="X";
-let gammeOver=false;
+let gameOver=false;
 
 function checkWinner(){
     const winnigCombos=[
@@ -19,7 +19,7 @@ function checkWinner(){
     for(const combo of winnigCombos){
         const[a,b,c]=combo;
         if(cells[a].textContent&&cells[a].textContent==cells[b].textContent&&cells[a].textContent==cells[c].textContent){
-            gammeOver=true;
+            gameOver=true;
             winnerText.textContent='Player ${currentPlayer} wins!';
             cells[a].style.backgroundColor="lightgreen";
             cells[b].style.backgroundColor="lightgreen";
@@ -29,4 +29,21 @@ function checkWinner(){
     }
 }
 
-fuction handleClick
+function handleClick(event){
+    const cell=event.target;
+    if(!cell.textContent&&!gameOver){
+        cell.textContent=currentPlayer;
+        checkWinner();
+        currentPlayer=currentPlayer==="X" ? "O" : "X";
+    }
+}
+function resetGame(){
+    for(const cell of cells){
+        cell.textContent="";
+        cell.style.backgroundColor="white";
+    }
+    winnerText.textContent="";
+    currentPlayer="X";
+    gameOver=false;
+}
+cells.forEach
